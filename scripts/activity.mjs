@@ -10,13 +10,14 @@ const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 const fonts = JSON.parse(readFileSync(join(here, 'fonts.json'), 'utf8'));
 
-const C = { bg: '#0A0A0B', line: '#212124', line2: '#2C2C30', white: '#FFFFFF', soft: '#D9D9DE', muted: '#8E8E96', dim: '#5C5C63', or: '#FF6B1A', or2: '#FF9A57' };
+// light theme (25 Nov 2026): white card, dark text; busier days get stronger orange
+const C = { bg: '#FFFFFF', line: '#EFEFF3', line2: '#E2E2E8', white: '#141417', soft: '#3A3A41', muted: '#6C6C75', dim: '#A3A3AC', or: '#FF6B1A', or2: '#FF9A57' };
 const LEVEL = [
-  { r: 2.1, fill: '#26262A' },
-  { r: 3.1, fill: '#6B2E0E' },
-  { r: 4.0, fill: '#B5470B' },
+  { r: 2.1, fill: '#E7E7EC' },
+  { r: 3.1, fill: '#FFC9A6' },
+  { r: 4.0, fill: '#FF9A57' },
   { r: 4.9, fill: C.or },
-  { r: 5.6, fill: C.or2 },
+  { r: 5.6, fill: '#E2540A' },
 ];
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -122,7 +123,7 @@ function render(days) {
     const [lab, val] = tiles[i];
     const w = Math.max(lab.length * 6.6, val.length * 9.2) + 22;
     tx -= w;
-    b.push(`<rect x="${tx}" y="30" width="${w}" height="72" rx="14" fill="#111113" stroke="${C.line2}"/>`);
+    b.push(`<rect x="${tx}" y="30" width="${w}" height="72" rx="14" fill="#F7F7F9" stroke="${C.line2}"/>`);
     b.push(T(tx + 11, 54, lab, 'm6', 9.5, C.muted, '', 0.6));
     b.push(T(tx + 11, 84, val, 'd7', 16, i === 0 ? C.or : C.white));
     tx -= 8;
